@@ -8,10 +8,10 @@ jobs:
     steps:
     - name: checkout
       uses: actions/checkout@v2
-    - name: Test if IncreaseBuild.bat is present
-      shell: pwsh
-      run: Test-Path IncreaseBuild.bat | Should -Be $true
-    - name: Running IncreaseBuild.bat
+    - name: Running Increase-Build.ps1
       shell: pwsh
       run: |
         .\_scripts\Increase-Build.ps1
+    - name: Commit changes
+      run: |
+        git commit -m 'Version'
