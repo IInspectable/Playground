@@ -2,7 +2,7 @@ name: On Push Workflow
 on: push
 
 jobs:
-  Increase version number:
+  Increase-Version-Number:
     runs-on: ubuntu-latest
     steps:
     - name: checkout
@@ -11,10 +11,10 @@ jobs:
       shell: pwsh
       run: |
         .\_scripts\Increase-Build.ps1
-    - name: Commit changes
+    - name: commit changes
       run: |
         git config --global user.email "ci@github.com"
         git config --global user.name "CI"
         git add .
-        git commit -m 'Version'
+        git commit -m 'build number'
         git push
