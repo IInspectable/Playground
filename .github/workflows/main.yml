@@ -6,6 +6,11 @@ jobs:
     name: Increase version number
     runs-on: ubuntu-latest
     steps:
+    - name: checkout
+      uses: actions/checkout@v2
+    - name: Test if IncreaseBuild.bat is present
+      shell: pwsh
+      run: Test-Path IncreaseBuild.bat | Should -Be $true
     - name: Running IncreaseBuild.bat
       shell: pwsh
       run: |
