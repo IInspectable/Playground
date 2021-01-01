@@ -2,8 +2,7 @@ name: On Push Workflow
 on: push
 
 jobs:
-  pester-test:
-    name: Increase version number
+  Increase version number:
     runs-on: ubuntu-latest
     steps:
     - name: checkout
