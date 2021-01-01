@@ -3,4 +3,8 @@ before_build:
   - IncreaseBuild.bat
 build_script:
    - msbuild build.proj
+   
+on_success:
+  - git commit -m 'CI Build'
+  - git push
   
