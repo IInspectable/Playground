@@ -16,4 +16,6 @@ jobs:
       run: |
         git config --global user.email "ci@github.com"
         git config --global user.name "CI"
+        git add .
         git commit -m 'Version'
+        git push
