@@ -1,10 +1,12 @@
-name: learn-github-actions
-on: [push]
+name: Test PowerShell on Ubuntu
+on: push
+
 jobs:
-  IncreaseBuild:
+  pester-test:
+    name: Pester test
     runs-on: ubuntu-latest
     steps:
-      - uses: Amadevus/pwsh-script@v2.0.0
-    with:
-        # PowerShell script to execute in Actions-hydrated context
-        script: .\IncreaseBuild.bat
+    - name: Perform a Pester test from the Tests.ps1 file
+      shell: pwsh
+      run: |
+        get-Date
