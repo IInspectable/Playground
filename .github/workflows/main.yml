@@ -1,17 +1,22 @@
-name: On Push Workflow
+name: Versioning
+
 on: push
 
 jobs:
-  Increase-Version-Number:
-    runs-on: ubuntu-latest
+  Versioning:
+    
+    runs-on: windows-latest
+    
     steps:
-    - name: checkout
+    - name: Checkout
       uses: actions/checkout@v2
+      
     - name: Running Increase-Build.ps1
       shell: pwsh
       run: |
         .\_scripts\Increase-Build.ps1
-    - name: commit changes
+        
+    - name: Commit Changes
       run: |
         git config --global user.email "ci@github.com"
         git config --global user.name "CI"
