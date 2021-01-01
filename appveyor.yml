@@ -5,6 +5,7 @@ build_script:
    - msbuild build.proj
    
 on_success:
+  - git add .
   - git commit -m 'CI Build'
   - git push
   
