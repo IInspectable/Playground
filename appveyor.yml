@@ -6,10 +6,5 @@ before_build:
 build_script:
    - msbuild build.proj
    
-on_success:
-  - git status
-  - git add .
-  - git commit -m 'CI Build'
-  - git status
-  - git push
+
   
