@@ -18,8 +18,8 @@ jobs:
         
     - name: Commit Changes
       run: |
-        git config --global user.email "ci@github.com"
-        git config --global user.name "CI"
+        git config --global user.email "hans@github.com"
+        git config --global user.name "Hans"
         git add .
         git commit -m 'build number'
         git push
