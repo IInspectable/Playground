@@ -38,7 +38,7 @@ function IncreaseBuild(){
 
 
 function UpdateVersion(){
-    [CmdletBinding(DefaultParametersetName='InvokeBuild')]
+    [CmdletBinding()]
     Param(
 
         [Parameter(Position=0, Mandatory=$true)]
@@ -67,3 +67,29 @@ function UpdateVersion(){
     $xml.Save($file)
 }
 
+function GetVersion(){
+    [CmdletBinding()]
+    Param(
+
+        [Parameter(ValueFromPipeline, Position=0, Mandatory=$true)]
+        [string] $file,
+		[switch] $AsString
+    )
+    
+    $file=Convert-Path $targetFiles[0]
+
+    Write-Verbose "Opening file '$file'"
+
+    $xml=[xml](cat $file)
+
+    $productVersionNode=$xml.Project.PropertyGroup.ChildNodes | ? Name -eq ProductVersion
+
+    $currentVersion=[Version]::Parse($productVersionNode.InnerText)
+	
+	if($AsString){
+		"Current version number is '$currentVersion'"
+	} else {
+		$currentVersion
+	}
+   
+}
